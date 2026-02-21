@@ -483,15 +483,15 @@
 
     <script>
         const PRICES = {
-            'PK': { wheat: 650, barley: 1100, dates: 1800, raisins: 2200, currency: 'PKR', symbol: 'Rs.' },
-            'SA': { wheat: 12, barley: 30, dates: 60, raisins: 75, currency: 'SAR', symbol: 'SR' },
-            'UAE': { wheat: 12, barley: 30, dates: 60, raisins: 75, currency: 'AED', symbol: 'DH' },
-            'UK': { wheat: 3.5, barley: 7, dates: 15, raisins: 18, currency: 'GBP', symbol: '£' },
-            'USA': { wheat: 5, barley: 10, dates: 20, raisins: 25, currency: 'USD', symbol: '$' },
-            'IN': { wheat: 200, barley: 450, dates: 800, raisins: 1000, currency: 'INR', symbol: '₹' },
-            'BD': { wheat: 220, barley: 500, dates: 900, raisins: 1100, currency: 'BDT', symbol: '৳' },
-            'CA': { wheat: 6, barley: 12, dates: 25, raisins: 30, currency: 'CAD', symbol: 'C$' },
-            'AU': { wheat: 7, barley: 15, dates: 28, raisins: 35, currency: 'AUD', symbol: 'A$' }
+            'PK': { wheat: 150, barley: 300, dates: 600, raisins: 1100, currency: 'PKR', symbol: 'Rs.' },
+            'SA': { wheat: 10, barley: 15, dates: 30, raisins: 40, currency: 'SAR', symbol: 'SR' },
+            'UAE': { wheat: 10, barley: 15, dates: 30, raisins: 40, currency: 'AED', symbol: 'DH' },
+            'UK': { wheat: 2.5, barley: 3, dates: 6, raisins: 8, currency: 'GBP', symbol: '£' },
+            'USA': { wheat: 3.5, barley: 5, dates: 10, raisins: 15, currency: 'USD', symbol: '$' },
+            'IN': { wheat: 60, barley: 100, dates: 250, raisins: 400, currency: 'INR', symbol: '₹' },
+            'BD': { wheat: 65, barley: 110, dates: 280, raisins: 450, currency: 'BDT', symbol: '৳' },
+            'CA': { wheat: 4, barley: 6, dates: 12, raisins: 18, currency: 'CAD', symbol: 'C$' },
+            'AU': { wheat: 4.5, barley: 7, dates: 14, raisins: 20, currency: 'AUD', symbol: 'A$' }
         };
 
         const WEIGHTS = { wheat: 2, barley: 3.5, dates: 3.5, raisins: 3.5 };
@@ -514,6 +514,7 @@
                 pax: "pax",
                 mandatoryHeader: "Fitrana (Sadaqah al-Fitr) is a mandatory charitable contribution to be paid by Muslims before the Eid al-Fitr prayer.",
                 spiritualSeries: "• Spiritual Ramadan Series 2026 •",
+                perPersonNote: "Standard per head rate",
                 wheat: "Wheat",
                 barley: "Barley",
                 dates: "Dates",
@@ -538,6 +539,7 @@
                 pax: "افراد",
                 mandatoryHeader: "فطرانہ (صدقہ فطر) ایک واجب صدقہ ہے جو مسلمانوں کو عید الفطر کی نماز سے پہلے ادا کرنا ہوتا ہے۔",
                 spiritualSeries: "• روحانی رمضان سیریز 2026 •",
+                perPersonNote: "فی کس شرح",
                 wheat: "گندم",
                 barley: "جو",
                 dates: "کھجور",
@@ -562,6 +564,7 @@
                 pax: "أفراد",
                 mandatoryHeader: "زكاة الفطر هي صدقة واجبة على كل مسلم قبل صلاة عيد الفطر.",
                 spiritualSeries: "• سلسلة رمضان الروحانية 2026 •",
+                perPersonNote: "المعدل القياسي للفرد",
                 wheat: "قمح",
                 barley: "شعير",
                 dates: "تمر",
@@ -691,7 +694,8 @@
                 .replace('{food}', foodName)
                 .replace('{weight}', weight)
                 .replace('{symbol}', symbol)
-                .replace('{price}', price);
+                .replace('{price}', price)
+                + `<br><span class="opacity-70 text-[8px]">${t.perPersonNote}: ${symbol}${Math.ceil(price * weight)}</span>`;
 
             localStorage.setItem('fitrana_v2', JSON.stringify({
                 country, members, food: currentFood, lastTotal: total, symbol
