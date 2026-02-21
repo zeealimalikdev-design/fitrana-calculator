@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitrana Calculator 2026 | Ramadan Kareem</title>
+    <meta name="description"
+        content="Calculate your Fitrana (Zakat al-Fitr) for Ramadan 2026. Mobile-friendly, premium commodity-based calculations for global countries. Accurate, fast, and spiritual design.">
+    <meta name="theme-color" content="#064e3b">
+
+    <!-- SEO & Social -->
+    <meta property="og:title" content="Fitrana Calculator 2026">
+    <meta property="og:description" content="Spiritual & Simple Fitrana Calculation for Ramadan 2026.">
+    <meta property="og:type" content="website">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo+Play:wght@200..1000&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --emerald-deep: #064e3b;
+            --emerald-rich: #065f46;
+            --gold-primary: #b45309;
+            --gold-glow: #fbbf24;
+            --cream: #fffbeb;
+            --glass-bg: rgba(6, 78, 59, 0.7);
+            --text-main: #fffbeb;
+            --text-muted: rgba(255, 251, 235, 0.6);
+            --input-bg: rgba(255, 251, 235, 0.05);
+            --border-color: rgba(251, 191, 36, 0.2);
+            --card-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            --bg-color: var(--emerald-deep);
+            --btn-food-bg: rgba(6, 78, 59, 0.4);
+            --toggle-bg: #064e3b;
+            --toggle-circle: #fffbeb;
+            --accent-glow: rgba(251, 191, 36, 0.3);
+        }
+
+        [data-theme="light"] {
+            --emerald-deep: #fdfcf0;
+            --emerald-rich: #f4e9cc;
+            --gold-primary: #b45309;
+            --gold-glow: #d97706;
+            --cream: #1a2e1d;
+            --glass-bg: rgba(255, 255, 255, 0.85);
+            --text-main: #1a2e1d;
+            --text-muted: rgba(26, 46, 29, 0.6);
+            --input-bg: rgba(26, 46, 29, 0.05);
+            --border-color: rgba(180, 83, 9, 0.3);
+            --card-shadow: 0 15px 35px rgba(180, 83, 9, 0.1);
+            --bg-color: #fdfcf0;
+            --btn-food-bg: rgba(255, 255, 255, 0.6);
+            --toggle-bg: #d1d5db;
+            --toggle-circle: #ffffff;
+            --accent-glow: rgba(180, 83, 9, 0.1);
+        }
+
+        * {
+            transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, transform 0.3s ease;
+        }
+
+        body {
+            font-family: 'Cairo Play', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            background-image:
+                radial-gradient(circle at 50% 50%, var(--accent-glow) 0%, transparent 80%),
+                url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 0 L55 35 L90 40 L55 45 L50 80 L45 45 L10 40 L45 35 Z' fill='%23b45309' fill-opacity='0.1'/%3E%3C/svg%3E");
+            background-attachment: fixed;
+            min-height: 100vh;
+            overflow-x: hidden;
+            direction: ltr;
+            /* Default */
+        }
+
+        body.rtl {
+            direction: rtl;
+            font-family: 'Cairo Play', sans-serif;
+        }
+
+        .cairo-play {
+            font-family: 'Cairo Play', sans-serif;
+        }
+
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--card-shadow);
+            position: relative;
+            z-index: 10;
+        }
+
+        .gold-glow-text {
+            color: var(--gold-glow);
+            text-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        .btn-premium {
+            background: linear-gradient(135deg, var(--gold-glow) 0%, var(--gold-primary) 100%);
+            box-shadow: 0 4px 15px var(--accent-glow);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            color: white;
+        }
+
+        .btn-premium:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 8px 25px var(--accent-glow);
+        }
+
+        .input-premium {
+            background: var(--input-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            transition: all 0.3s ease;
+        }
+
+        .input-premium:focus {
+            border-color: var(--gold-glow);
+            background: var(--input-bg);
+            outline: none;
+            box-shadow: 0 0 0 4px var(--accent-glow);
+        }
+
+        select.input-premium option {
+            background-color: var(--emerald-rich);
+            color: white;
+        }
+
+        [data-theme="light"] select.input-premium option {
+            background-color: white;
+            color: #1a2e1d;
+        }
+
+        .food-btn {
+            background: var(--btn-food-bg);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .food-btn.active {
+            background: rgba(180, 83, 9, 0.2);
+            border-color: var(--gold-glow);
+            transform: scale(1.05);
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        .moon-icon {
+            filter: drop-shadow(0 0 15px var(--accent-glow));
+            animation: moon-drift 6s ease-in-out infinite;
+        }
+
+        @keyframes moon-drift {
+
+            0%,
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            50% {
+                transform: translate(-5px, -12px) rotate(-5deg);
+            }
+        }
+
+        .star {
+            position: absolute;
+            background: var(--gold-glow);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+
+            0%,
+            100% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+        }
+
+        /* Toggle Button Styles */
+        .theme-switch-wrapper {
+            display: flex;
+            align-items: center;
+        }
+
+        .theme-switch {
+            display: inline-block;
+            height: 28px;
+            position: relative;
+            width: 50px;
+        }
+
+        .theme-switch input {
+            display: none;
+        }
+
+        .slider {
+            background-color: #cbd5e1;
+            bottom: 0;
+            cursor: pointer;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            background-color: white;
+            bottom: 3px;
+            content: "";
+            height: 22px;
+            left: 3px;
+            position: absolute;
+            transition: .4s;
+            width: 22px;
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        input:checked+.slider {
+            background-color: var(--gold-primary);
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(22px);
+        }
+
+        .lang-btn {
+            background: var(--btn-food-bg);
+            border: 1px solid var(--border-color);
+            padding: 4px 12px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .lang-btn.active {
+            background: var(--gold-primary);
+            color: white;
+            border-color: var(--gold-glow);
+        }
+
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            appearance: none;
+            margin: 0;
+        }
+
+        input[type="number"] {
+            -moz-appearance: textfield;
+            appearance: textfield;
+        }
+
+        @media (max-width: 480px) {
+            .glass-card {
+                padding: 1.5rem !important;
+                border-radius: 2rem !important;
+            }
+
+            .cairo-play.text-5xl {
+                font-size: 2.75rem;
+            }
+
+            header h1 {
+                font-size: 2.75rem !important;
+            }
+
+            .food-btn {
+                padding: 0.75rem !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="flex flex-col items-center justify-start p-4 md:p-8 min-h-screen relative pt-24">
+    <!-- Top Controls -->
+    <div class="fixed top-4 left-4 right-4 z-50 flex justify-between items-center max-w-4xl mx-auto w-full px-4">
+        <!-- Language Switcher -->
+        <div class="flex gap-2 bg-black/20 p-1 rounded-full border border-white/10 backdrop-blur-md" id="lang-switcher">
+            <button class="lang-btn active" data-lang="en">EN</button>
+            <button class="lang-btn" data-lang="ur">اردو</button>
+            <button class="lang-btn" data-lang="ar">عربي</button>
+        </div>
+
+        <!-- Theme Toggle -->
+        <div class="theme-switch-wrapper bg-black/20 p-2 rounded-full border border-white/10 backdrop-blur-md">
+            <label class="theme-switch" for="theme-checkbox">
+                <input type="checkbox" id="theme-checkbox" />
+                <div class="slider"></div>
+            </label>
+        </div>
+    </div>
+
+    <!-- Starry Background elements -->
+    <div class="star" style="top: 10%; left: 20%; width: 2px; height: 2px;"></div>
+    <div class="star" style="top: 30%; left: 80%; width: 3px; height: 3px; animation-delay: 1s;"></div>
+    <div class="star" style="top: 70%; left: 15%; width: 2px; height: 2px; animation-delay: 2s;"></div>
+    <div class="star" style="top: 85%; left: 75%; width: 3px; height: 3px; animation-delay: 0.5s;"></div>
+
+    <div class="w-full max-w-lg">
+        <!-- Brand Header -->
+        <header class="text-center mb-10 relative">
+            <div class="flex justify-center mb-6">
+                <!-- Premium SVG Moon -->
+                <svg class="moon-icon w-24 h-24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M75 25C75 52.6142 52.6142 75 25 75C21.4398 75 18.006 74.6288 14.7003 73.922C24.3414 86.8407 39.6997 95 57 95C82.4051 95 103 74.4051 103 49C103 26.6853 87.1643 7.9943 65.9984 3.73715C71.7454 10.0381 75 18.2393 75 25Z"
+                        fill="url(#moon_grad)" />
+                    <defs>
+                        <linearGradient id="moon_grad" x1="14.7003" y1="3.73715" x2="103" y2="95"
+                            gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#FDE68A" />
+                            <stop offset="1" stop-color="#D97706" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+            <h1 class="cairo-play text-5xl font-bold gold-glow-text mb-2 tracking-tight" data-i18n="subtitle">Ramadan
+                Kareem</h1>
+            <p class="text-amber-500 font-semibold uppercase tracking-[0.3em] text-[10px]" data-i18n="projected">
+                Projected Fitrana 2026 / 1447 AH</p>
+        </header>
+
+        <!-- Calculator Container -->
+        <main class="glass-card rounded-[2.5rem] p-6 md:p-10 mb-8">
+            <div class="space-y-8">
+                <!-- Step 1: Destination -->
+                <section>
+                    <label for="country"
+                        class="block text-xs font-bold text-amber-500 uppercase tracking-widest mb-3 ml-1"
+                        data-i18n="currentCountry">Current
+                        Country</label>
+                    <div class="relative">
+                        <select id="country"
+                            class="input-premium w-full px-5 py-4 rounded-2xl appearance-none cursor-pointer text-lg font-medium">
+                            <option value="PK">Pakistan</option>
+                            <option value="SA">Saudi Arabia</option>
+                            <option value="UAE">UAE</option>
+                            <option value="UK">United Kingdom</option>
+                            <option value="USA">United States</option>
+                            <option value="IN">India</option>
+                            <option value="BD">Bangladesh</option>
+                            <option value="CA">Canada</option>
+                            <option value="AU">Australia</option>
+                            <option value="Other" data-i18n="other">Other (Custom Price)</option>
+                        </select>
+                        <div class="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-amber-500">
+                            ▼
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Step 2: Resource -->
+                <section>
+                    <label class="block text-xs font-bold text-amber-500 uppercase tracking-widest mb-4 ml-1"
+                        data-i18n="commodityRef">Commodity
+                        Reference</label>
+                    <div class="grid grid-cols-2 gap-4" id="food-selection">
+                        <button data-food="wheat" class="food-btn active rounded-2xl p-4 text-center group">
+                            <span class="block text-2xl mb-2 group-hover:scale-110 transition-transform">🌾</span>
+                            <span class="text-[10px] font-bold uppercase tracking-wider text-amber-500/80"
+                                data-i18n="wheat">Wheat</span>
+                            <span class="block text-[8px] opacity-60">(2kg)</span>
+                        </button>
+                        <button data-food="barley" class="food-btn rounded-2xl p-4 text-center group">
+                            <span class="block text-2xl mb-2 group-hover:scale-110 transition-transform">🥖</span>
+                            <span class="text-[10px] font-bold uppercase tracking-wider text-amber-500/80"
+                                data-i18n="barley">Barley</span>
+                            <span class="block text-[8px] opacity-60">(3.5kg)</span>
+                        </button>
+                        <button data-food="dates" class="food-btn rounded-2xl p-4 text-center group">
+                            <span class="block text-2xl mb-2 group-hover:scale-110 transition-transform">🌴</span>
+                            <span class="text-[10px] font-bold uppercase tracking-wider text-amber-500/80"
+                                data-i18n="dates">Dates</span>
+                            <span class="block text-[8px] opacity-60">(3.5kg)</span>
+                        </button>
+                        <button data-food="raisins" class="food-btn rounded-2xl p-4 text-center group">
+                            <span class="block text-2xl mb-2 group-hover:scale-110 transition-transform">🍇</span>
+                            <span class="text-[10px] font-bold uppercase tracking-wider text-amber-500/80"
+                                data-i18n="raisins">Raisins</span>
+                            <span class="block text-[8px] opacity-60">(3.5kg)</span>
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Step 3: Manual Price -->
+                <div id="manual-price-container" class="hidden animate-fade-in">
+                    <label for="manual-price"
+                        class="block text-xs font-bold text-amber-500 uppercase tracking-widest mb-3 ml-1"
+                        data-i18n="marketPrice">Market Price
+                        per KG</label>
+                    <input type="number" id="manual-price" placeholder="0.00"
+                        class="input-premium w-full px-5 py-4 rounded-2xl text-lg font-bold">
+                </div>
+
+                <!-- Step 4: Household -->
+                <section>
+                    <label for="family-members"
+                        class="block text-xs font-bold text-amber-500 uppercase tracking-widest mb-3 ml-1"
+                        data-i18n="householdMembers">Household
+                        Members</label>
+                    <div class="flex items-center gap-2 md:gap-4">
+                        <button id="dec-members"
+                            class="w-12 h-12 md:w-14 md:h-14 rounded-2xl border border-amber-500/30 flex items-center justify-center text-xl md:text-2xl text-amber-500 hover:bg-amber-500/10 active:scale-95 transition-all">−</button>
+                        <input type="number" id="family-members" value="1" min="1"
+                            class="input-premium flex-1 min-w-0 text-center text-2xl md:text-3xl font-black py-2 md:py-3 rounded-2xl h-12 md:h-14">
+                        <button id="inc-members"
+                            class="w-12 h-12 md:w-14 md:h-14 rounded-2xl border border-amber-500/30 flex items-center justify-center text-xl md:text-2xl text-amber-500 hover:bg-amber-500/10 active:scale-95 transition-all">+</button>
+                    </div>
+                </section>
+
+                <!-- Result Display -->
+                <section
+                    class="bg-black/10 rounded-[2rem] p-8 border border-white/5 text-center relative overflow-hidden">
+                    <p class="text-[10px] font-bold text-amber-500 uppercase tracking-[0.2em] mb-4"
+                        data-i18n="totalPayable">Total Payable
+                        Amount</p>
+                    <div class="flex flex-col items-center">
+                        <div class="flex items-baseline space-x-2">
+                            <span id="currency-symbol" class="text-2xl font-bold text-amber-600">PKR</span>
+                            <span id="total-amount"
+                                class="text-6xl font-black text-amber-500 cairo-play tracking-tighter">0</span>
+                        </div>
+                        <p id="calculation-details"
+                            class="text-[10px] text-amber-500/60 mt-4 leading-relaxed font-medium">
+                            Calculated for 1 person using Wheat (2kg)
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Action Button -->
+                <button id="calculate-btn"
+                    class="btn-premium w-full py-5 rounded-2xl text-lg font-black text-white uppercase tracking-widest"
+                    data-i18n="recalculate">
+                    Recalculate
+                </button>
+            </div>
+        </main>
+
+        <!-- Persistent Savings Info -->
+        <div id="history-section" class="mt-8 text-center hidden">
+            <div class="inline-block px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/20">
+                <p class="text-[10px] font-bold text-amber-500 uppercase tracking-widest">
+                    <span data-i18n="saved">Saved</span>: <span id="last-saved"
+                        class="text-amber-600 dark:text-amber-100"></span>
+                </p>
+            </div>
+        </div>
+
+        <footer class="mt-12 text-center">
+            <p class="text-amber-500 opacity-60 text-[11px] leading-6 max-w-sm mx-auto" data-i18n="mandatoryHeader">
+                Fitrana (Sadaqah al-Fitr) is a mandatory charitable contribution to be paid by Muslims before the Eid
+                al-Fitr prayer.
+            </p>
+            <p class="text-amber-600 font-bold mt-2 text-[10px]" data-i18n="spiritualSeries">• Spiritual Ramadan Series
+                2026 •</p>
+        </footer>
+    </div>
+
+    <script>
+        const PRICES = {
+            'PK': { wheat: 650, barley: 1100, dates: 1800, raisins: 2200, currency: 'PKR', symbol: 'Rs.' },
+            'SA': { wheat: 12, barley: 30, dates: 60, raisins: 75, currency: 'SAR', symbol: 'SR' },
+            'UAE': { wheat: 12, barley: 30, dates: 60, raisins: 75, currency: 'AED', symbol: 'DH' },
+            'UK': { wheat: 3.5, barley: 7, dates: 15, raisins: 18, currency: 'GBP', symbol: '£' },
+            'USA': { wheat: 5, barley: 10, dates: 20, raisins: 25, currency: 'USD', symbol: '$' },
+            'IN': { wheat: 200, barley: 450, dates: 800, raisins: 1000, currency: 'INR', symbol: '₹' },
+            'BD': { wheat: 220, barley: 500, dates: 900, raisins: 1100, currency: 'BDT', symbol: '৳' },
+            'CA': { wheat: 6, barley: 12, dates: 25, raisins: 30, currency: 'CAD', symbol: 'C$' },
+            'AU': { wheat: 7, barley: 15, dates: 28, raisins: 35, currency: 'AUD', symbol: 'A$' }
+        };
+
+        const WEIGHTS = { wheat: 2, barley: 3.5, dates: 3.5, raisins: 3.5 };
+
+        const TRANSLATIONS = {
+            en: {
+                subtitle: "Ramadan Kareem",
+                projected: "Projected Fitrana 2026 / 1447 AH",
+                currentCountry: "Current Country",
+                commodityRef: "Commodity Reference",
+                marketPrice: "Market Price per KG",
+                householdMembers: "Household Members",
+                totalPayable: "Total Payable Amount",
+                calcDetails: "Calculated for <b>{members}</b> {person} using <b>{food}</b> ({weight}kg each) at <b>{symbol}{price}/kg</b>",
+                people: "people",
+                person: "person",
+                recalculate: "Recalculate",
+                saved: "Saved",
+                for: "for",
+                pax: "pax",
+                mandatoryHeader: "Fitrana (Sadaqah al-Fitr) is a mandatory charitable contribution to be paid by Muslims before the Eid al-Fitr prayer.",
+                spiritualSeries: "• Spiritual Ramadan Series 2026 •",
+                wheat: "Wheat",
+                barley: "Barley",
+                dates: "Dates",
+                raisins: "Raisins",
+                other: "Other (Custom Price)",
+                updating: "Updating..."
+            },
+            ur: {
+                subtitle: "رمضان کریم",
+                projected: "متوقع فطرانہ 2026 / 1447 ھ",
+                currentCountry: "موجودہ ملک",
+                commodityRef: "اجناس کا حوالہ",
+                marketPrice: "فی کلو مارکیٹ قیمت",
+                householdMembers: "خاندان کے افراد",
+                totalPayable: "کل واجب الادا رقم",
+                calcDetails: "<b>{members}</b> {person} کے لیے <b>{food}</b> ({weight} کلو ہر ایک) کے حساب سے <b>{symbol}{price}/فی کلو</b> پر شمار کیا گیا",
+                people: "افراد",
+                person: "فرد",
+                recalculate: "دوبارہ حساب لگائیں",
+                saved: "محفوظ کیا گیا",
+                for: "کے لیے",
+                pax: "افراد",
+                mandatoryHeader: "فطرانہ (صدقہ فطر) ایک واجب صدقہ ہے جو مسلمانوں کو عید الفطر کی نماز سے پہلے ادا کرنا ہوتا ہے۔",
+                spiritualSeries: "• روحانی رمضان سیریز 2026 •",
+                wheat: "گندم",
+                barley: "جو",
+                dates: "کھجور",
+                raisins: "کشمش",
+                other: "دیگر (اپنی قیمت درج کریں)",
+                updating: "اپ ڈیٹ ہو رہا ہے..."
+            },
+            ar: {
+                subtitle: "رمضان كريم",
+                projected: "زكاة الفطر المتوقعة 2026 / 1447 هـ",
+                currentCountry: "البلد الحالي",
+                commodityRef: "مرجع السلع",
+                marketPrice: "سعر السوق للكيلوغرام",
+                householdMembers: "أفراد الأسرة",
+                totalPayable: "إجمالي المبلغ المستحق",
+                calcDetails: "تم الحساب لـ <b>{members}</b> {person} باستخدام <b>{food}</b> ({weight} كجم لكل فرد) بسعر <b>{symbol}{price}/كجم</b>",
+                people: "أشخاص",
+                person: "شخص",
+                recalculate: "إعادة الحساب",
+                saved: "تم الحفظ",
+                for: "لـ",
+                pax: "أفراد",
+                mandatoryHeader: "زكاة الفطر هي صدقة واجبة على كل مسلم قبل صلاة عيد الفطر.",
+                spiritualSeries: "• سلسلة رمضان الروحانية 2026 •",
+                wheat: "قمح",
+                barley: "شعير",
+                dates: "تمر",
+                raisins: "زبيب",
+                other: "أخرى (سعر مخصص)",
+                updating: "جاري التحديث..."
+            }
+        };
+
+        let currentFood = 'wheat';
+        let currentLang = 'en';
+
+        // Elements
+        const countrySelect = document.getElementById('country');
+        const foodBtns = document.querySelectorAll('.food-btn');
+        const familyInput = document.getElementById('family-members');
+        const totalDisplay = document.getElementById('total-amount');
+        const currencyDisplay = document.getElementById('currency-symbol');
+        const detailsDisplay = document.getElementById('calculation-details');
+        const manualContainer = document.getElementById('manual-price-container');
+        const manualInput = document.getElementById('manual-price');
+        const decBtn = document.getElementById('dec-members');
+        const incBtn = document.getElementById('inc-members');
+        const lastSavedDisplay = document.getElementById('last-saved');
+        const historySection = document.getElementById('history-section');
+        const calculateBtn = document.getElementById('calculate-btn');
+        const themeCheckbox = document.getElementById('theme-checkbox');
+        const langBtns = document.querySelectorAll('.lang-btn');
+
+        function init() {
+            // Theme Setup
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            themeCheckbox.checked = savedTheme === 'light';
+
+            // Language Setup
+            currentLang = localStorage.getItem('lang') || 'en';
+            setLanguage(currentLang);
+
+            // Calculation Data Setup
+            const data = localStorage.getItem('fitrana_v2');
+            if (data) {
+                const saved = JSON.parse(data);
+                countrySelect.value = saved.country || 'PK';
+                familyInput.value = saved.members || 1;
+                currentFood = saved.food || 'wheat';
+
+                foodBtns.forEach(btn => {
+                    btn.classList.toggle('active', btn.dataset.food === currentFood);
+                });
+
+                if (saved.lastTotal) {
+                    historySection.classList.remove('hidden');
+                    lastSavedDisplay.innerText = `${saved.symbol}${saved.lastTotal} ${TRANSLATIONS[currentLang].for} ${saved.members} ${TRANSLATIONS[currentLang].pax}`;
+                }
+            }
+            updateCalc();
+        }
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('lang', lang);
+
+            // Update Body direction
+            if (lang === 'ur' || lang === 'ar') {
+                document.body.classList.add('rtl');
+            } else {
+                document.body.classList.remove('rtl');
+            }
+
+            // Update active btn
+            langBtns.forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+
+            // Update static texts
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (TRANSLATIONS[lang][key]) {
+                    el.innerHTML = TRANSLATIONS[lang][key];
+                }
+            });
+
+            // Update history if exists
+            const data = localStorage.getItem('fitrana_v2');
+            if (data) {
+                const saved = JSON.parse(data);
+                if (saved.lastTotal) {
+                    lastSavedDisplay.innerText = `${saved.symbol}${saved.lastTotal} ${TRANSLATIONS[currentLang].for} ${saved.members} ${TRANSLATIONS[currentLang].pax}`;
+                }
+            }
+
+            updateCalc();
+        }
+
+        function updateCalc() {
+            const country = countrySelect.value;
+            const members = parseInt(familyInput.value) || 1;
+            const weight = WEIGHTS[currentFood];
+
+            let price = 0;
+            let symbol = '';
+
+            if (country === 'Other') {
+                manualContainer.classList.remove('hidden');
+                price = parseFloat(manualInput.value) || 0;
+                symbol = '';
+            } else {
+                manualContainer.classList.add('hidden');
+                price = PRICES[country][currentFood];
+                symbol = PRICES[country].symbol;
+            }
+
+            const rawTotal = price * weight * members;
+            const total = Math.ceil(rawTotal);
+
+            animateValue(totalDisplay, parseInt(totalDisplay.innerText) || 0, total, 400);
+            currencyDisplay.innerText = symbol;
+
+            const t = TRANSLATIONS[currentLang];
+            const foodName = t[currentFood];
+            const personTxt = members > 1 ? t.people : t.person;
+
+            detailsDisplay.innerHTML = t.calcDetails
+                .replace('{members}', members)
+                .replace('{person}', personTxt)
+                .replace('{food}', foodName)
+                .replace('{weight}', weight)
+                .replace('{symbol}', symbol)
+                .replace('{price}', price);
+
+            localStorage.setItem('fitrana_v2', JSON.stringify({
+                country, members, food: currentFood, lastTotal: total, symbol
+            }));
+        }
+
+        function animateValue(obj, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                obj.innerHTML = Math.floor(progress * (end - start) + start);
+                if (progress < 1) window.requestAnimationFrame(step);
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        // Listeners
+        foodBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                foodBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentFood = btn.dataset.food;
+                updateCalc();
+            });
+        });
+
+        countrySelect.addEventListener('change', updateCalc);
+        familyInput.addEventListener('input', updateCalc);
+        manualInput.addEventListener('input', updateCalc);
+        decBtn.addEventListener('click', () => { if (familyInput.value > 1) { familyInput.value--; updateCalc(); } });
+        incBtn.addEventListener('click', () => { familyInput.value++; updateCalc(); });
+
+        calculateBtn.addEventListener('click', () => {
+            const originalText = calculateBtn.innerText;
+            calculateBtn.innerText = TRANSLATIONS[currentLang].updating;
+            setTimeout(() => {
+                updateCalc();
+                calculateBtn.innerText = originalText;
+            }, 500);
+        });
+
+        themeCheckbox.addEventListener('change', (e) => {
+            const theme = e.target.checked ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+        });
+
+        langBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                setLanguage(btn.dataset.lang);
+            });
+        });
+
+        init();
+    </script>
+</body>
+
+</html>
